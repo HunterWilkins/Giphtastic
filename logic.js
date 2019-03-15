@@ -45,35 +45,37 @@ $(".button-group").on("click", "button", function(){
 
     });
 
-    $(".results").on("click", ".gif", function(){
-        var state = $(this).attr("data-state");
-        
-        console.log("gif has been clicked");
-        if (state === "still"){
-            $(this).attr("src",$(this).attr("data-animate"));
-            $(this).attr("data-state", "animate");
-            
-            $(this).css("border", "rgb(182, 204, 255) solid 2px");
-            $(this).css("box-shadow", "0 0 10px ");
-            $(this).css("opacity", "1");
-            
-            console.log("This gif now has a data state of " + $(this).attr("data-state"));
-        }
-        else  if (state === "animate") {
-            $(this).attr("src",$(this).attr("data-still"));
-            $(this).attr("data-state", "still");
-
-            $(this).css("box-shadow", "none");
-            $(this).css("border", "none");
-            $(this).css("opacity", ".5");
-
-            console.log("This gif now has a data state of " +$(this).attr("data-state"));
-        }
-        timesRun++;
-        console.log("This has activated: " + timesRun + " times ==============");
-
-    })
+   
 });
+$(".results").on("click", ".gif", function(event){
+    // event.preventDefault();
+    var state = $(this).attr("data-state");
+    
+    console.log("gif has been clicked");
+    if (state === "still"){
+        $(this).attr("src",$(this).attr("data-animate"));
+        $(this).attr("data-state", "animate");
+        
+        $(this).css("border", "rgb(182, 204, 255) solid 2px");
+        $(this).css("box-shadow", "0 0 10px ");
+        $(this).css("opacity", "1");
+        
+        console.log("This gif now has a data state of " + $(this).attr("data-state"));
+    }
+    else  if (state === "animate") {
+        $(this).attr("src",$(this).attr("data-still"));
+        $(this).attr("data-state", "still");
+
+        $(this).css("box-shadow", "none");
+        $(this).css("border", "rgb(182, 204, 255, 0) solid 1px" );
+        $(this).css("opacity", ".5");
+
+        console.log("This gif now has a data state of " +$(this).attr("data-state"));
+    }
+    timesRun++;
+    console.log("This has activated: " + timesRun + " times ==============");
+
+})
 
 $("#submit").on("click", function(){
     event.preventDefault();
